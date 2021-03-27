@@ -1,10 +1,9 @@
 package sorting
 
-class MyLong : SortItem {
+class MyLong(var inputFile:String = "",  var outputFile :String= "") : SortItem {
     var rez = mutableListOf<Int>()
-
     init {
-        val input = input()
+        val input = input(inputFile)
         for (s in input) {
             val split = s.split("""\s+""".toRegex())
             for (str in split) {
@@ -23,11 +22,11 @@ class MyLong : SortItem {
     }
 
     override fun printSortNaturally() {
-        printList(sort(rez), "numbers", " ")
+        printList(sort(rez), "numbers", " ", outputFile)
     }
 
     override fun printSortCount() {
-        printCountList(countSort(rez))
+        printCountList(countSort(rez),outputFile)
     }
 
     override fun toString(): String {

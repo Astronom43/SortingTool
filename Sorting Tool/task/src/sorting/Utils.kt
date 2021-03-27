@@ -1,19 +1,28 @@
 package sorting
 
-import java.io.BufferedReader
-import java.io.InputStreamReader
+import java.io.File
 import java.util.*
 
-fun input(): MutableList<String> {
+fun input(inputFile: String): MutableList<String> {
     val listStr = mutableListOf<String>()
-    val scanner = Scanner(System.`in`)
+    when{
+        inputFile.isBlank() ->{
+            val scanner = Scanner(System.`in`)
 
-    while (true) {
-        if (!scanner.hasNext()) break
-        val str = scanner.nextLine()
-        listStr.add(str)
+            while (true) {
+                if (!scanner.hasNext()) break
+                val str = scanner.nextLine()
+                listStr.add(str)
+            }
+            scanner.close()
+        }
+        else ->{
+            val file = File(inputFile)
+            listStr.addAll(file.readLines())
+        }
     }
-    scanner.close()
+
+
 
 
     return listStr

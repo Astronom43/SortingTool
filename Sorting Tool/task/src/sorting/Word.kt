@@ -1,20 +1,20 @@
 package sorting
 
-class Word: SortItem{
+class Word(var inputFile:String = "",  var outputFile :String= ""): SortItem{
     var rez = mutableListOf<String>()
 
     init {
-        val input = input()
+        val input = input(inputFile)
         for (s in input) {
             rez.addAll(s.split("""\s+""".toRegex()))
         }
     }
     override fun printSortNaturally() {
-        printList(sort(rez), "words", " ")
+        printList(sort(rez), "words", " ", outputFile)
     }
 
     override fun printSortCount() {
-        printCountList(countSort(rez))
+        printCountList(countSort(rez),outputFile)
     }
 
     override fun toString(): String {

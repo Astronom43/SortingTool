@@ -1,17 +1,17 @@
 package sorting
 
-class Line:SortItem {
+class Line(var inputFile:String = "",  var outputFile :String= ""):SortItem {
     private val rez = mutableListOf<String>()
 
     init {
-        rez.addAll(input())
+        rez.addAll(input(inputFile))
     }
     override fun printSortNaturally() {
-        printList(sort(rez), "lines")
+        printList(sort(rez), "lines", outputFile = outputFile)
     }
 
     override fun printSortCount() {
-        printCountList(countSort(rez))
+        printCountList(countSort(rez),outputFile)
     }
 
     override fun toString(): String {
